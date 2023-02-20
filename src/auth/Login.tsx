@@ -1,0 +1,83 @@
+import {Form, Input, Row, Button, Col, Card} from "antd";
+import {useNavigate} from "react-router-dom";
+import "./Login.css";
+import logo from "../components/assets/logo.png";
+import {ILoginType} from "./authTypes";
+import {useLoginMutation} from "./loginApi";
+import {useEffect} from "react";
+
+type Props = {};
+
+function Login({}: Props) {
+  const navigate = useNavigate();
+  const [login, {data}] = useLoginMutation();
+  useEffect(() => {
+    localStorage.setItem("token", data?.data.token as string);
+  }, [data]);
+  if (data?.data.token) {
+    navigate("/home");
+  }
+
+  const onFinish = async (values: ILoginType) => {
+    const body: ILoginType = {
+      email: values.email,
+      password: values.password,
+    };
+    await login(body);
+  };
+  return (
+    <Row className="login-page">
+      <Form initialValues={{remember: true}} onFinish={onFinish}>
+        <Card
+          style={{
+            borderRadius: "8px",
+            marginTop: "1rem",
+            boxShadow: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px",
+          }}
+        >
+          <Col xs={24} sm={24} md={24} lg={6}>
+            <img
+              className="illustration-wrapper"
+              src={logo}
+              alt="Logo"
+              width={250}
+            />
+          </Col>
+
+          <Form.Item
+            style={{marginTop: "20px"}}
+            name="email"
+            rules={[{required: true, message: "Please input your username!"}]}
+          >
+            <Input type="email" placeholder="Username" />
+          </Form.Item>
+
+          <Form.Item
+            name="password"
+            rules={[{required: true, message: "Please input your password!"}]}
+          >
+            <Input.Password placeholder="Password" />
+          </Form.Item>
+
+          {/* <Form.Item name='remember' valuePropName='checked'>
+      <Checkbox />
+      <Typography.Text>Remember me</Typography.Text>
+    </Form.Item> */}
+          <Row justify={"center"}>
+            <Form.Item>
+              <Button
+                type="primary"
+                htmlType="submit"
+                className="login-form-button"
+              >
+                LOGIN
+              </Button>
+            </Form.Item>
+          </Row>
+        </Card>
+      </Form>
+    </Row>
+  );
+}
+
+export default Login;
