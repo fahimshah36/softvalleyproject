@@ -10,7 +10,6 @@ import React from "react";
 import {Link, Outlet} from "react-router-dom";
 import logo from "../components/assets/logo.png";
 
-type Props = {};
 type MenuItem = Required<MenuProps>["items"][number];
 function getItem(
   label: React.ReactNode,
@@ -26,7 +25,7 @@ function getItem(
   } as MenuItem;
 }
 
-function Layouts({}: Props) {
+function Layouts() {
   const {Header, Content, Footer, Sider} = Layout;
 
   const items: MenuItem[] = [

@@ -1,10 +1,8 @@
-import async from "../../../app/async";
 import {api} from "../../../app/baseReq";
 import {HTTPResponse} from "../../../auth/authTypes";
 import {
   IAssigneeDataType,
   ILeadData,
-  ILeadDataType,
   ILeadReqFormData,
   ISourceDataType,
   IStatusDataType,

@@ -6,9 +6,7 @@ import {ILoginType} from "./authTypes";
 import {useLoginMutation} from "./loginApi";
 import {useEffect} from "react";
 
-type Props = {};
-
-function Login({}: Props) {
+function Login() {
   const navigate = useNavigate();
   const [login, {data}] = useLoginMutation();
   useEffect(() => {

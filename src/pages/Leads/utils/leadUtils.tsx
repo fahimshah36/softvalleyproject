@@ -1,7 +1,7 @@
 import {ColumnsType} from "antd/lib/table";
 import {Button, Space, Popconfirm} from "antd";
 import {EditOutlined, DeleteOutlined} from "@ant-design/icons/lib/icons";
-import {ILeadData, ILeadDataType} from "../types/leadsTypes";
+import {ILeadDataType} from "../types/leadsTypes";
 
 export const leadUtils = (): ColumnsType<ILeadDataType> => {
   return [

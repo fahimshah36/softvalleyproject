@@ -1,13 +1,8 @@
 import "antd/dist/reset.css";
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  useNavigate,
-} from "react-router-dom";
+import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import Login from "./auth/Login";
 import Layouts from "./components/Layouts";
-import {ConfigProvider, Row, Button} from "antd";
+import {ConfigProvider} from "antd";
 import Leads from "./pages/Leads/page/Leads";
 
 function App() {

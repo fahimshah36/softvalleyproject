@@ -17,9 +17,7 @@ import dayjs from "dayjs";
 import {useFilterDataMutation} from "../api/leadsApi";
 import {leadUtils} from "../utils/leadUtils";
 
-type Props = {};
-
-function Leads({}: Props) {
+function Leads() {
   const [form] = Form.useForm();
   const [filter, {data}] = useFilterDataMutation();
 
