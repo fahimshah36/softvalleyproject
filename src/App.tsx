@@ -6,8 +6,6 @@ import {ConfigProvider} from "antd";
 import Leads from "./pages/Leads/page/Leads";
 
 function App() {
-  const url = process.env.REACT_APP_BASE_URL;
-  console.log(process.env.REACT_APP_BASE_URL);
   return (
     <ConfigProvider
       theme={{

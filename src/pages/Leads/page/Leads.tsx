@@ -24,7 +24,7 @@ function Leads() {
   const [filterButton, setFilterButton] = useState<boolean>(false);
   useEffect(() => {
     filter({});
-  }, []);
+  }, [filter]);
   const onFinish = async (values: ILeadReqFormData) => {
     const setFrom_date =
       values.contact_date && dayjs(values.contact_date[0]).toISOString();
