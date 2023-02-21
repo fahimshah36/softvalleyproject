@@ -41,7 +41,6 @@ function Leads() {
     };
     filterButton ? filter(body) : filter({});
   };
-  console.log(data);
 
   return (
     <div>
@@ -68,7 +67,7 @@ function Leads() {
             <SelectSource name="source_id" label="Select Source" />
           </Col>
           <Col span={6} xs={24} sm={24} md={24} lg={4}>
-            <SelectAssignee name="user_id" label="Select Source" />
+            <SelectAssignee name="user_id" label="Select Assignee" />
           </Col>
           <Col span={6} xs={24} sm={24} md={24} lg={4}>
             <Form.Item name="contact_date" label="Contacted Date">
