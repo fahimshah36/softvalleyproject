@@ -22,7 +22,7 @@ function SelectAssignee({name, label}: Props) {
       <Select
         mode="multiple"
         allowClear
-        placeholder={"Select Status"}
+        placeholder={"Select Assignee"}
         placement="bottomRight"
         showSearch
         filterOption={(input, option) =>
