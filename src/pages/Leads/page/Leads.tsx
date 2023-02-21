@@ -16,11 +16,15 @@ import {ILeadReqFormData} from "../types/leadsTypes";
 import dayjs from "dayjs";
 import {useFilterDataMutation} from "../api/leadsApi";
 import {leadUtils} from "../utils/leadUtils";
+import {useEffect, useState} from "react";
 
 function Leads() {
   const [form] = Form.useForm();
   const [filter, {data}] = useFilterDataMutation();
-
+  const [filterButton, setFilterButton] = useState<boolean>(false);
+  useEffect(() => {
+    filter({});
+  }, []);
   const onFinish = async (values: ILeadReqFormData) => {
     const setFrom_date =
       values.contact_date && dayjs(values.contact_date[0]).toISOString();
@@ -35,7 +39,7 @@ function Leads() {
       contacted_date_from: setFrom_date as string,
       contacted_date_to: setTo_date as string,
     };
-    filter(body);
+    filterButton ? filter(body) : filter({});
   };
   console.log(data);
 
@@ -73,14 +77,27 @@ function Leads() {
           </Col>
           <Col span={6} xs={24} sm={24} md={24} lg={2}>
             <Form.Item label=" ">
-              <Button htmlType="submit" type="primary">
+              <Button
+                htmlType="submit"
+                type="primary"
+                onClick={() => {
+                  setFilterButton(true);
+                }}
+              >
                 Filter
               </Button>
             </Form.Item>
           </Col>
           <Col span={6} xs={24} sm={24} md={24} lg={2}>
             <Form.Item label=" ">
-              <Button htmlType="submit" type="primary" danger>
+              <Button
+                htmlType="submit"
+                type="primary"
+                danger
+                onClick={() => {
+                  setFilterButton(false);
+                }}
+              >
                 Reset Filter
               </Button>
             </Form.Item>

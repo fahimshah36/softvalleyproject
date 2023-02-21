@@ -34,7 +34,7 @@ export const loginApi = api.injectEndpoints({
     }),
 
     //filtering data
-    filterData: build.mutation<HTTPResponse<ILeadData>, ILeadReqFormData>({
+    filterData: build.mutation<HTTPResponse<ILeadData>, ILeadReqFormData | {}>({
       query: (body) => ({
         url: "/admin/lead/list?page=1&limit=10",
         method: "POST",
